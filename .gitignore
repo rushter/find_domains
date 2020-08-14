@@ -1,0 +1,12 @@
+*.pyc
+*.pyo
+*.swp
+*.swo
+*.orig
+
+/*.egg-info/
+/web/settings_local.py
+pip-log.txt
+/.hg/
+/.pytest_cache/
+/.tox/

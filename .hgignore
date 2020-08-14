@@ -1,0 +1,15 @@
+syntax:glob
+*.pyc
+*.pyo
+*.swp
+*.swo
+*.orig
+
+pip-log.txt
+*.egg-info
+
+syntax:regexp
+^\.git/
+^\.pytest_cache/
+^\.tox/
+
