@@ -20,14 +20,18 @@ RE_DOMAIN = re.compile(
 )
 
 
+def is_tld(name):
+    if not CACHE['tlds']:
+        CACHE['tlds'] = extractor.tlds
+    return name.lower() in CACHE['tlds']
+
+
 def find_domains(data):
     ret = set()
     for match in RE_DOMAIN.finditer(data):
         dom = match.group(0).rstrip('.').lower()
         if '_' not in dom:
-            if not CACHE['tlds']:
-                CACHE['tlds'] = extractor.tlds
             tld = dom.rsplit('.', 1)[1]
-            if tld in CACHE['tlds']:
-                ret.add(dom.lower())
+            if is_tld(tld):
+                ret.add(dom)
     return ret
