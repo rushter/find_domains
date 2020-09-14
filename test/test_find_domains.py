@@ -1,5 +1,5 @@
 from find_domains import (
-    find_domains, RE_DOMAIN, is_tld, iterate_domains
+    find_domains, RE_DOMAIN, is_tld, iter_domains
 )
 
 
@@ -75,9 +75,9 @@ def test_is_tld():
 
 #foo bar google.com. zzzzz ya.ru
 
-def test_iterate_domains():
+def test_iter_domains():
     data = 'foo bar google.com. zzzzz ya.ru'
-    items = list(iterate_domains(data))
+    items = list(iter_domains(data))
     assert items == [
         ('google.com', 8, 10),
         ('ya.ru', 26, 5),

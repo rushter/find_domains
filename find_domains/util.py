@@ -28,12 +28,12 @@ def is_tld(name):
 
 def find_domains(data):
     ret = set()
-    for domain, _, _ in iterate_domains(data):
+    for domain, _, _ in iter_domains(data):
         ret.add(domain)
     return ret
 
 
-def iterate_domains(data):
+def iter_domains(data):
     for match in RE_DOMAIN.finditer(data):
         # Here:
         # match.group(0) - matched domain name
