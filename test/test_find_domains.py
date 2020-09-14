@@ -1,4 +1,4 @@
-from find_domains.util import find_domains, RE_DOMAIN
+from find_domains import find_domains, RE_DOMAIN
 
 
 def test_re_domain():
