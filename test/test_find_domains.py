@@ -1,4 +1,4 @@
-from find_domains import find_domains, RE_DOMAIN
+from find_domains import find_domains, RE_DOMAIN, is_tld
 
 
 def test_re_domain():
@@ -62,3 +62,11 @@ def test_find_domains2():
         'bar.рф',
         'foo.com',
     ])
+
+
+def test_is_tld():
+    assert is_tld('ru') is True
+    assert is_tld('zzzzzz') is False
+    assert is_tld('рф') is True
+    assert is_tld('info') is True
+    assert is_tld('impossibleshit') is False
