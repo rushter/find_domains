@@ -8,7 +8,7 @@ with open('README.md') as inp:
 
 setup(
     name = 'find_domains',
-    version = '0.0.2',
+    version = '0.0.3',
     author = 'Gregory Petukhov',
     author_email = 'lorien@lorien.name',
     maintainer='Gregory Petukhov',
