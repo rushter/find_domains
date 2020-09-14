@@ -28,10 +28,17 @@ def is_tld(name):
 
 def find_domains(data):
     ret = set()
-    for match in RE_DOMAIN.finditer(data):
-        dom = match.group(0).rstrip('.').lower()
-        if '_' not in dom:
-            tld = dom.rsplit('.', 1)[1]
-            if is_tld(tld):
-                ret.add(dom)
+    for domain, _, _ in iterate_domains(data):
+        ret.add(domain)
     return ret
+
+
+def iterate_domains(data):
+    for match in RE_DOMAIN.finditer(data):
+        # Here:
+        # match.group(0) - matched domain name
+        # match.group(1) - top level domain name segment
+        if '_' not in match.group(0):
+            if is_tld(match.group(1)):
+                dom = match.group(0).rstrip('.').lower()
+                yield (dom, match.start(0), len(dom))

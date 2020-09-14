@@ -1,4 +1,6 @@
-from find_domains import find_domains, RE_DOMAIN, is_tld
+from find_domains import (
+    find_domains, RE_DOMAIN, is_tld, iterate_domains
+)
 
 
 def test_re_domain():
@@ -70,3 +72,13 @@ def test_is_tld():
     assert is_tld('рф') is True
     assert is_tld('info') is True
     assert is_tld('impossibleshit') is False
+
+#foo bar google.com. zzzzz ya.ru
+
+def test_iterate_domains():
+    data = 'foo bar google.com. zzzzz ya.ru'
+    items = list(iterate_domains(data))
+    assert items == [
+        ('google.com', 8, 10),
+        ('ya.ru', 26, 5),
+    ]
